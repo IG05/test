@@ -1,5 +1,5 @@
 const request = require('supertest');
-const app = require('server'); // <- import the Express app
+const app = require('./server.js'); // <- import the Express app
 
 describe('Basic test', () => {
   it('should return 200 OK and expected message', async () => {
