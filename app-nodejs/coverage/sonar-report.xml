@@ -1,0 +1,5 @@
+<testExecutions version="1">
+ <file path="__tests__\app.test.js">
+  <testCase name="Basic test - always passes" duration="2"/>
+ </file>
+</testExecutions>

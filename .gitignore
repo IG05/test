@@ -1,1 +1,7 @@
 app-nodejs/node_modules/
+
+
+app-nodesjs/
+coverage/
+lcov-report/
+lcov.info
