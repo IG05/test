@@ -12,5 +12,11 @@ module.exports = {
         relativePaths: true
       }
     ]
+  ],
+  roots: ["<rootDir>/"],            // or specify your source folder like "src" if you have one
+  collectCoverageFrom: [
+    "**/*.js",
+    "!**/node_modules/**",
+    "!**/__tests__/**"
   ]
 };
