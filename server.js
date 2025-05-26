@@ -1,16 +1,20 @@
-// server.js
-const express = require('express');
-const app = express();
-const port = process.env.PORT || 3000;
+// server.listen.test.js
+const { spawn } = require('child_process');
+const path = require('path');
 
-app.get('/', (req, res) => {
-  res.send('Hello from Node.js App (Blue-Green Deployment)');
-});
+describe('server listen', () => {
+  it('should start the server when executed directly', (done) => {
+    const serverProcess = spawn('node', [path.join(__dirname, '../server.js')]);
 
-if (require.main === module) {
-  app.listen(port, () => {
-    console.log(`Node.js app listening at http://localhost:${port}`);
+    serverProcess.stdout.on('data', (data) => {
+      if (data.toString().includes('Node.js app listening')) {
+        serverProcess.kill();
+        done();
+      }
+    });
+
+    serverProcess.on('error', (err) => {
+      done(err);
+    });
   });
-}
-
-module.exports = app; // <- export app for testing
+});
