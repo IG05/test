@@ -1,6 +1,6 @@
 module.exports = {
   collectCoverage: true,
-  coverageDirectory: "./coverage",
+  coverageDirectory: "coverage",
   coverageReporters: ["lcov", "text"],
   reporters: [
     "default",
