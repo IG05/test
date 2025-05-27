@@ -5,6 +5,13 @@ module.exports = {
   reporters: [
     "default",
     [
+      "jest-junit",
+      {
+        outputDirectory: "reports/junit",
+        outputName: "junit.xml"
+      }
+    ],
+    [
       "@casualbot/jest-sonar-reporter",
       {
         outputDirectory: "coverage",
@@ -13,7 +20,7 @@ module.exports = {
       }
     ]
   ],
-  roots: ["<rootDir>/"],            // or specify your source folder like "src" if you have one
+  roots: ["<rootDir>/"],            // adjust if your source code is inside a folder like 'src'
   collectCoverageFrom: [
     "**/*.js",
     "!**/node_modules/**",

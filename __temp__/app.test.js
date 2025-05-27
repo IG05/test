@@ -1,6 +1,6 @@
 // __tests__/server.test.js
 const request = require('supertest');
-const app = require('../server');
+const app = require('../server.js');
 
 describe('GET /', () => {
   it('should return the welcome message', async () => {
