@@ -1,7 +1,7 @@
 module.exports = {
   collectCoverage: true,
   coverageDirectory: "coverage",
-  coverageReporters: ["lcov", "text"],
+  coverageReporters: ["lcov", "text","html"],
   reporters: [
     "default",
     [
@@ -24,6 +24,8 @@ module.exports = {
   collectCoverageFrom: [
     "**/*.js",
     "!**/node_modules/**",
-    "!**/__tests__/**"
+    "!**/__tests__/**",
+    "!**/jest.config.js"
+    
   ]
 };
