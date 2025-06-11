@@ -4,7 +4,7 @@ const app = express();
 app.disable('x-powered-by');
 
 app.get('/', (req, res) => {
-  res.send('Hello from Node.js App (Blue-Green Deployment)');
+  res.send('Bye from Node.js App (Blue-Green Deployment)');
 });
 
 app.use((req, res) => {
