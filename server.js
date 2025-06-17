@@ -3,11 +3,8 @@ const app = express();
 
 app.disable('x-powered-by');
 
-app.use((req, res, next) => {
-  if (req.path.endsWith('/health')) {
-    return res.status(500).send('Health check failed');
-  }
-  next();
+app.get('/health', (req, res) => {
+  res.status(500).send('Health check failed intentionally');
 });
 
 
