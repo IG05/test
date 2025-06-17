@@ -4,7 +4,7 @@ const app = express();
 app.disable('x-powered-by');
 
 app.get('/health', (req, res) => {
-  res.status(500).send('Health check failed intentionally');
+  res.status(200).send('Health check passed');
 });
 
 
