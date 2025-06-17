@@ -9,7 +9,7 @@ app.get('/health', (req, res) => {
 
 
 app.get('/', (req, res) => {
-  res.send('Bye from Node.js App (Blue-Green Deployment)');
+  res.send('Node.js App (Blue-Green Deployment)');
 });
 
 app.use((req, res) => {
