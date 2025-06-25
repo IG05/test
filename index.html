@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BlueGreen - Zero-Downtime Deployment Platform</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+        
+        * {
+            font-family: 'Inter', sans-serif;
+        }
+        
+        .gradient-bg {
+            background: linear-gradient(135deg, #3b82f6 0%, #10b981 100%);
+        }
+        
+        .blue-gradient {
+            background: linear-gradient(135deg, #3b82f6 0%, #1e40af 100%);
+        }
+        
+        .green-gradient {
+            background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+        }
+        
+        .glass-effect {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .floating-animation {
+            animation: float 6s ease-in-out infinite;
+        }
+        
+        .floating-delay {
+            animation: float 6s ease-in-out infinite 2s;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+        
+        .pulse-glow {
+            animation: pulse-glow 2s ease-in-out infinite alternate;
+        }
+        
+        @keyframes pulse-glow {
+            from { box-shadow: 0 0 20px rgba(59, 130, 246, 0.5); }
+            to { box-shadow: 0 0 30px rgba(59, 130, 246, 0.8), 0 0 40px rgba(16, 185, 129, 0.6); }
+        }
+        
+        .hover-lift {
+            transform: translateY(0);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .hover-lift:hover {
+            transform: translateY(-8px);
+        }
+        
+        .text-gradient {
+            background: linear-gradient(135deg, #3b82f6 0%, #10b981 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .hero-text {
+            background: linear-gradient(135deg, #1f2937 0%, #4b5563 50%, #1f2937 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .step-line {
+            position: relative;
+        }
+        
+        .step-line::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 100%;
+            width: 50px;
+            height: 2px;
+            background: linear-gradient(90deg, #3b82f6, #10b981);
+            transform: translateY(-50%);
+        }
+        
+        .step-line:last-child::before {
+            display: none;
+        }
+        
+        .tech-icon {
+            transition: all 0.3s ease;
+        }
+        
+        .tech-icon:hover {
+            transform: scale(1.1) rotate(5deg);
+        }
+    </style>
+</head>
+<body class="bg-gray-50 overflow-x-hidden">
+    <!-- Navigation -->
+    <nav class="fixed top-0 w-full z-50 glass-effect">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center py-4">
+                <div class="flex items-center space-x-2">
+                    <div class="w-8 h-8 gradient-bg rounded-lg flex items-center justify-center">
+                        <span class="text-white font-bold text-lg">BG</span>
+                    </div>
+                    <span class="text-xl font-bold text-gray-800">BlueGreen</span>
+                </div>
+                <div class="hidden md:flex space-x-8">
+                    <a href="#features" class="text-gray-600 hover:text-gray-900 transition-colors">Features</a>
+                    <a href="#process" class="text-gray-600 hover:text-gray-900 transition-colors">Process</a>
+                    <a href="#tech" class="text-gray-600 hover:text-gray-900 transition-colors">Technologies</a>
+                    <a href="#contact" class="text-gray-600 hover:text-gray-900 transition-colors">Contact</a>
+                </div>
+                <button class="gradient-bg text-white px-6 py-2 rounded-full hover:scale-105 transition-transform">
+                    Get Started
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="min-h-screen flex items-center justify-center pt-20 relative overflow-hidden">
+        <div class="absolute inset-0 z-0">
+            <div class="absolute top-20 left-10 w-72 h-72 blue-gradient rounded-full mix-blend-multiply filter blur-xl opacity-30 floating-animation"></div>
+            <div class="absolute top-40 right-10 w-96 h-96 green-gradient rounded-full mix-blend-multiply filter blur-xl opacity-30 floating-delay"></div>
+            <div class="absolute -bottom-8 left-20 w-80 h-80 bg-indigo-300 rounded-full mix-blend-multiply filter blur-xl opacity-30 floating-animation"></div>
+        </div>
+        
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
+            <h1 class="text-6xl md:text-8xl font-extrabold mb-6 hero-text leading-tight">
+                <span class="text-blue-600">Blue</span><span class="text-green-600">Green</span><br>
+                <span class="text-gradient">Deployment</span>
+            </h1>
+            <p class="text-xl md:text-2xl text-gray-600 mb-12 max-w-4xl mx-auto leading-relaxed">
+                Achieve zero-downtime deployments with our automated blue-green deployment platform. Seamlessly switch between environments using Google Cloud, Docker, and Jenkins.
+            </p>
+            <div class="flex flex-col sm:flex-row gap-6 justify-center items-center">
+                <button class="gradient-bg text-white px-12 py-4 rounded-full text-lg font-semibold hover:scale-105 transition-all pulse-glow">
+                    Start Deploying
+                </button>
+                <button class="text-gray-700 px-12 py-4 rounded-full text-lg font-semibold border-2 border-gray-300 hover:border-gray-400 hover:bg-gray-50 transition-all">
+                    View Demo
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- What is Blue-Green Deployment -->
+    <section id="features" class="py-24 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-20">
+                <h2 class="text-5xl font-bold text-gray-900 mb-6">What is Blue-Green Deployment?</h2>
+                <p class="text-xl text-gray-600 max-w-4xl mx-auto leading-relaxed">
+                    Blue-green deployment is a technique that reduces downtime and risk by running two identical production environments called Blue and Green. At any time, only one environment is live, serving all production traffic.
+                </p>
+            </div>
+            
+            <div class="grid md:grid-cols-2 gap-16 items-center">
+                <div class="space-y-8">
+                    <div class="flex items-start space-x-4">
+                        <div class="w-12 h-12 blue-gradient rounded-xl flex items-center justify-center flex-shrink-0">
+                            <span class="text-white font-bold">1</span>
+                        </div>
+                        <div>
+                            <h3 class="text-2xl font-bold text-gray-900 mb-3">Zero Downtime</h3>
+                            <p class="text-gray-600 leading-relaxed">Switch between environments instantly without service interruption. Your users never experience downtime during deployments.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="flex items-start space-x-4">
+                        <div class="w-12 h-12 green-gradient rounded-xl flex items-center justify-center flex-shrink-0">
+                            <span class="text-white font-bold">2</span>
+                        </div>
+                        <div>
+                            <h3 class="text-2xl font-bold text-gray-900 mb-3">Instant Rollback</h3>
+                            <p class="text-gray-600 leading-relaxed">If issues arise, immediately switch back to the previous stable environment with a single click.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="flex items-start space-x-4">
+                        <div class="w-12 h-12 gradient-bg rounded-xl flex items-center justify-center flex-shrink-0">
+                            <span class="text-white font-bold">3</span>
+                        </div>
+                        <div>
+                            <h3 class="text-2xl font-bold text-gray-900 mb-3">Risk Reduction</h3>
+                            <p class="text-gray-600 leading-relaxed">Test in production-like environment before switching traffic, minimizing deployment risks.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="relative">
+                    <div class="bg-gradient-to-r from-blue-500 to-green-500 p-8 rounded-2xl text-white">
+                        <div class="grid grid-cols-2 gap-6">
+                            <div class="bg-white/20 p-6 rounded-xl backdrop-blur-sm">
+                                <div class="w-8 h-8 bg-blue-500 rounded-full mb-4"></div>
+                                <h4 class="font-bold mb-2">Blue Environment</h4>
+                                <p class="text-sm opacity-90">Current Production</p>
+                                <div class="mt-4 h-2 bg-white/30 rounded-full">
+                                    <div class="h-2 bg-white rounded-full w-full"></div>
+                                </div>
+                            </div>
+                            <div class="bg-white/20 p-6 rounded-xl backdrop-blur-sm">
+                                <div class="w-8 h-8 bg-green-500 rounded-full mb-4"></div>
+                                <h4 class="font-bold mb-2">Green Environment</h4>
+                                <p class="text-sm opacity-90">Staging/Idle</p>
+                                <div class="mt-4 h-2 bg-white/30 rounded-full">
+                                    <div class="h-2 bg-white rounded-full w-3/4"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="text-center mt-6">
+                            <div class="inline-flex items-center space-x-2 bg-white/20 px-4 py-2 rounded-full">
+                                <span class="text-sm">Traffic Switch</span>
+                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4"></path>
+                                </svg>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Deployment Process -->
+    <section id="process" class="py-24 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-20">
+                <h2 class="text-5xl font-bold text-gray-900 mb-6">Deployment Process</h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                    Our automated pipeline ensures smooth, reliable deployments every time
+                </p>
+            </div>
+            
+            <div class="grid md:grid-cols-5 gap-8">
+                <div class="text-center step-line">
+                    <div class="w-16 h-16 gradient-bg rounded-2xl flex items-center justify-center mx-auto mb-4 hover-lift">
+                        <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-lg font-bold text-gray-900 mb-2">Code Commit</h3>
+                    <p class="text-sm text-gray-600">Push to GitHub repository triggers pipeline</p>
+                </div>
+                
+                <div class="text-center step-line">
+                    <div class="w-16 h-16 gradient-bg rounded-2xl flex items-center justify-center mx-auto mb-4 hover-lift">
+                        <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-lg font-bold text-gray-900 mb-2">Jenkins Build</h3>
+                    <p class="text-sm text-gray-600">Automated testing and Docker image creation</p>
+                </div>
+                
+                <div class="text-center step-line">
+                    <div class="w-16 h-16 gradient-bg rounded-2xl flex items-center justify-center mx-auto mb-4 hover-lift">
+                        <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M9 19l3 3m0 0l3-3m-3 3V10"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-lg font-bold text-gray-900 mb-2">Deploy to Green</h3>
+                    <p class="text-sm text-gray-600">Deploy new version to idle environment</p>
+                </div>
+                
+                <div class="text-center step-line">
+                    <div class="w-16 h-16 gradient-bg rounded-2xl flex items-center justify-center mx-auto mb-4 hover-lift">
+                        <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-lg font-bold text-gray-900 mb-2">Test & Verify</h3>
+                    <p class="text-sm text-gray-600">Smoke tests and health checks</p>
+                </div>
+                
+                <div class="text-center">
+                    <div class="w-16 h-16 gradient-bg rounded-2xl flex items-center justify-center mx-auto mb-4 hover-lift">
+                        <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-lg font-bold text-gray-900 mb-2">Traffic Switch</h3>
+                    <p class="text-sm text-gray-600">Route traffic to new environment</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Technologies -->
+    <section id="tech" class="py-24 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-20">
+                <h2 class="text-5xl font-bold text-gray-900 mb-6">Powered by Industry Leaders</h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                    Built on robust, scalable technologies for enterprise-grade reliability
+                </p>
+            </div>
+            
+            <div class="grid md:grid-cols-4 lg:grid-cols-8 gap-8">
+                <div class="group text-center hover-lift">
+                    <div class="w-20 h-20 bg-blue-500 rounded-2xl flex items-center justify-center mx-auto mb-4 tech-icon">
+                        <svg class="w-10 h-10 text-white" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M12 0L1.75 6L12 12L22.25 6L12 0Z"/>
+                            <path d="M1.75 18L12 24L22.25 18L12 12L1.75 18Z"/>
+                        </svg>
+                    </div>
+                    <h3 class="font-bold text-gray-900">Google Cloud Run</h3>
+                </div>
+                
+                <div class="group text-center hover-lift">
+                    <div class="w-20 h-20 bg-gray-700 rounded-2xl flex items-center justify-center mx-auto mb-4 tech-icon">
+                        <svg class="w-10 h-10 text-white" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M13.5 3H12L8 21h1.5l1.125-4.5h5.25L17 21h1.5L13.5 3zm-.75 12h-1.5l.75-3 .75 3z"/>
+                        </svg>
+                    </div>
+                    <h3 class="font-bold text-gray-900">VM Instances</h3>
+                </div>
+                
+                <div class="group text-center hover-lift">
+                    <div class="w-20 h-20 bg-blue-600 rounded-2xl flex items-center justify-center mx-auto mb-4 tech-icon">
+                        <svg class="w-10 h-10 text-white" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+                        </svg>
+                    </div>
+                    <h3 class="font-bold text-gray-900">Container Registry</h3>
+                </div>
+                
+                <div class="group text-center hover-lift">
+                    <div class="w-20 h-20 bg-green-600 rounded-2xl flex items-center justify-center mx-auto mb-4 tech-icon">
+                        <svg class="w-10 h-10 text-white" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M12 2L2 7v10c0 5.55 3.84 9.74 9 9 5.16-.74 9-4.45 9-10V7l-10-5z"/>
+                        </svg>
+                    </div>
+                    <h3 class="font-bold text-gray-900">Elastic IP</h3>
+                </div>
+                
+                <div class="group text-center hover-lift">
+                    <div class="w-20 h-20 bg-blue-400 rounded-2xl flex items-center justify-center mx-auto mb-4 tech-icon">
+                        <svg class="w-10 h-10 text-white" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M12 2C13.1 2 14 2.9 14 4C14 5.1 13.1 6 12 6C10.9 6 10 5.1 10 4C10 2.9 10.9 2 12 2ZM21 9V7L15 1H5C3.9 1 3 1.9 3 3V21C3 22.1 3.9 23 5 23H19C20.1 23 21 22.1 21 21V9M19 21H5V3H13V9H19V21Z"/>
+                        </svg>
+                    </div>
+                    <h3 class="font-bold text-gray-900">Docker</h3>
+                </div>
+                
+                <div class="group text-center hover-lift">
+                    <div class="w-20 h-20 bg-red-600 rounded-2xl flex items-center justify-center mx-auto mb-4 tech-icon">
+                        <svg class="w-10 h-10 text-white" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M12 2A10 10 0 0 0 2 12A10 10 0 0 0 12 22A10 10 0 0 0 22 12A10 10 0 0 0 12 2Z"/>
+                        </svg>
+                    </div>
+                    <h3 class="font-bold text-gray-900">Jenkins</h3>
+                </div>
+                
+                <div class="group text-center hover-lift">
+                    <div class="w-20 h-20 bg-gray-900 rounded-2xl flex items-center justify-center mx-auto mb-4 tech-icon">
+                        <svg class="w-10 h-10 text-white" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M12 0C5.37 0 0 5.37 0 12C0 17.31 3.435 21.795 8.205 23.385C8.805 23.49 9.03 23.13 9.03 22.815C9.03 22.53 9.015 21.585 9.015 20.55C6 21.135 5.22 19.845 4.98 19.17C4.845 18.825 4.26 17.76 3.75 17.475C3.33 17.25 2.73 16.665 3.735 16.65C4.68 16.635 5.355 17.55 5.58 17.91C6.66 19.725 8.385 19.215 9.075 18.9C9.18 18.12 9.495 17.595 9.84 17.295C7.17 16.995 4.38 15.96 4.38 11.37C4.38 10.065 4.845 8.985 5.61 8.145C5.49 7.845 5.07 6.615 5.73 4.965C5.73 4.965 6.735 4.65 9.03 6.195C9.99 5.925 11.01 5.79 12.03 5.79C13.05 5.79 14.07 5.925 15.03 6.195C17.325 4.635 18.33 4.965 18.33 4.965C18.99 6.615 18.57 7.845 18.45 8.145C19.215 8.985 19.68 10.05 19.68 11.37C19.68 15.975 16.875 16.995 14.205 17.295C14.64 17.67 15.015 18.39 15.015 19.515C15.015 21.12 15 22.41 15 22.815C15 23.13 15.225 23.505 15.825 23.385C18.2072 22.5807 20.2772 21.0497 21.7437 19.0074C23.2101 16.965 23.9993 14.5143 24 12C24 5.37 18.63 0 12 0Z"/>
+                        </svg>
+                    </div>
+                    <h3 class="font-bold text-gray-900">GitHub</h3>
+                </div>
+                
+                <div class="group text-center hover-lift">
+                    <div class="w-20 h-20 bg-green-500 rounded-2xl flex items-center justify-center mx-auto mb-4 tech-icon">
+                        <svg class="w-10 h-10 text-white" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M12 0L1.75 6L12 12L22.25 6L12 0Z"/>
+                            <path d="M1.75 18L12 24L22.25 18L12 12L1.75 18Z"/>
+                        </svg>
+                    </div>
+                    <h3 class="font-bold text-gray-900">Nginx</h3>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="py-24 gradient-bg relative overflow-hidden">
+        <div class="absolute inset-0">
+            <div class="absolute top-0 left-1/4 w-96 h-96 bg-white rounded-full mix-blend-overlay filter blur-3xl opacity-10 floating-animation"></div>
+            <div class="absolute bottom-0 right-1/4 w-80 h-80 bg-white rounded-full mix-blend-overlay filter blur-3xl opacity-10 floating-delay"></div>
+        </div>
+        
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
+            <h2 class="text-5xl md:text-6xl font-bold text-white mb-6 leading-tight">
+                Ready for Zero-Downtime?
+            </h2>
+            <p class="text-xl text-white/90 mb-12 leading-relaxed">
+                Join companies deploying with confidence using our blue-green deployment platform
+            </p>
+            <div class="flex flex-col sm:flex-row gap-6 justify-center">
+                <button class="bg-white text-gray-900 px-12 py-4 rounded-full text-lg font-semibold hover:scale-105 hover:shadow-2xl transition-all">
+                    Start Free Trial
+                </button>
+                <button class="text-white px-12 py-4 rounded-full text-lg font-semibold border-2 border-white/30 hover:border-white hover:bg-white/10 transition-all">
+                    Book Demo
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-16">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="flex items-center space-x-2 mb-8 md:mb-0">
+                    <div class="w-8 h-8 gradient-bg rounded-lg flex items-center justify-center">
+                        <span class="text-white font-bold text-lg">BG</span>
+                    </div>
+                    <span class="text-xl font-bold">BlueGreen</span>
+                </div>
+                <div class="flex space-x-8">
+                    <a href="#" class="text-gray-400 hover:text-white transition-colors">Documentation</a>
+                    <a href="#" class="text-gray-400 hover:text-white transition
