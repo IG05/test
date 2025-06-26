@@ -12,6 +12,10 @@ app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, 'index.html'));
 });
 
+app.get('/api', (req, res) => {
+  res.send('Hello from Node.js App (Blue-Green Deployment)');
+});
+
 app.use((req, res) => {
   res.status(404).send('Not Found');
 });
